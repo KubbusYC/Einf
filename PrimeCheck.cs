@@ -62,6 +62,7 @@ namespace PrimeCheck
                 List<int> primes = new List<int>();
                 primes.Add(2);
                 string result = "Falsch hihi";
+                bool parseSuccessfull = true;
 
 
                 Console.WriteLine("Gib Zahl:");
@@ -83,6 +84,7 @@ namespace PrimeCheck
                 else
                 {
                     Console.WriteLine("Kein Zahl du kahba!");
+                    parseSuccessfull = false;
                 }
 
                 if (fail == false)
@@ -90,7 +92,11 @@ namespace PrimeCheck
                     result = "Diese Zahl ist Prim";
                 }
 
-                Console.WriteLine((result).ToString());
+                if (parseSuccessfull)
+                {
+                    Console.WriteLine((result).ToString());
+                }
+
                 Console.ReadKey();
                 Console.Clear();
             }
