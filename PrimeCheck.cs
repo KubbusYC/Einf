@@ -69,6 +69,7 @@ namespace PrimeCheck
                 Console.WriteLine("Gib Zahl:");
                 if (int.TryParse(Console.ReadLine(), out n))     //Read input
                 {
+                    n = Math.Abs(n);                            //Makes number be positive by default
                     while (!fail && primes[primes.Count - 1] <= (int)(Math.Round(Math.Sqrt(n), 0)))    //keep checking until we find something or we checked up to the root of n
                     {
                         if (!checkPrimes(n, primes))        //start to check if the number is prime using the smaller primes
