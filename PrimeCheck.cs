@@ -1,4 +1,4 @@
-using System;
+sing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +24,7 @@ namespace PrimeCheck
                 {
                     return false;
                 }
-            } 
+            }
             bool checkPrimes(int a, List<int> oldPrimes)                            //Checks if a is not divisible by any element of oldPrimes (int list)
             {
                 int temp = 0;                                                           //temp counts through the entries of oldPrime, we initialize at 0
@@ -41,7 +41,7 @@ namespace PrimeCheck
                 }
                 return isPrime;                                                         //return the result of checkPrimes()
             }
-            
+
             int nextPrime(List<int> oldPrimes)                                      //searches for the next bigger prime (of the last entry in oldPrimes) and adds it at the end
             {
                 int last = oldPrimes[oldPrimes.Count - 1];                              //saves the last entry of oldPrimes in last (-1 because arrays start at 0 ya twat) we use last to count up through ints later
@@ -62,15 +62,21 @@ namespace PrimeCheck
                 bool fail = false;                      //default is prime, as we try to prove the opposite over and over
                 List<int> primes = new List<int>();     //list fo found primes smaller than n
                 primes.Add(2);                          //first prime is always 2
-                string result = "Falsch hihi";          
+                string result = "Falsch hihi";
                 bool parseSuccessfull = true;
 
 
                 Console.WriteLine("Gib Zahl:");
                 if (int.TryParse(Console.ReadLine(), out n))     //Read input
                 {
+                    if (n < 0)
+                    {
+                        Console.WriteLine("No");
+                        parseSuccessfull = false;
+                    }
                     while (!fail && primes[primes.Count - 1] <= (int)(Math.Round(Math.Sqrt(n), 0)))    //keep checking until we find something or we checked up to the root of n
                     {
+
                         if (!checkPrimes(n, primes))        //start to check if the number is prime using the smaller primes
                         {
                             fail = true;
