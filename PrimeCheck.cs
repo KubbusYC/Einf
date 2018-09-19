@@ -104,3 +104,4 @@ namespace PrimeCheck
     }
 }
 
+//made by luki
