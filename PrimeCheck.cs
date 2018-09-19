@@ -9,26 +9,19 @@ namespace PrimeCheck
 
     class Program
     {
-        
-
-        
-
-        
-
-
 
         static void Main(string[] args)
         {
 
             //Function Definitions
-              bool checkPrimes (int a, List<int> oldPrimes) 
+            bool checkPrimes(int a, List<int> oldPrimes)
             {
                 int temp = 0;
                 bool isPrime = true;
                 int root = (int)(Math.Round(Math.Sqrt(a), 0));
                 while (isPrime && temp < oldPrimes.Count && oldPrimes[temp] <= root)
                 {
-                    if(Divisible(a, oldPrimes[temp]))
+                    if (Divisible(a, oldPrimes[temp]))
                     {
                         isPrime = false;
                         temp++;
@@ -48,7 +41,7 @@ namespace PrimeCheck
                     return false;
                 }
             } //checks if a is divisible by b
-              int  nextPrime(List<int> oldPrimes)
+            int nextPrime(List<int> oldPrimes)
             {
                 int last = oldPrimes[oldPrimes.Count - 1];
                 while (true)
@@ -61,37 +54,47 @@ namespace PrimeCheck
 
             }//adds the next prime to old Primes
 
-            //Variable Declaration
-            int n;
-            bool fail = false;
-            List<int> primes = new List<int>();
-            primes.Add(2);
-
-          
-
-            Console.WriteLine("Number:");
-            if (int.TryParse(Console.ReadLine(),out n))     //Read input
+            while (true)
             {
-                while(!fail && primes[primes.Count-1] <= (int)(Math.Round(Math.Sqrt(n), 0)))
+                //Variable Declaration
+                int n;
+                bool fail = false;
+                List<int> primes = new List<int>();
+                primes.Add(2);
+                string result = "Falsch hihi";
+
+
+                Console.WriteLine("Gib Zahl:");
+                if (int.TryParse(Console.ReadLine(), out n))     //Read input
                 {
-                    if(!checkPrimes(n, primes))
+                    while (!fail && primes[primes.Count - 1] <= (int)(Math.Round(Math.Sqrt(n), 0)))
                     {
-                        fail = true;
-                    }
-                    else
-                    {
-                        primes.Add(nextPrime(primes));
-                    }
+                        if (!checkPrimes(n, primes))
+                        {
+                            fail = true;
+                        }
+                        else
+                        {
+                            primes.Add(nextPrime(primes));
+                        }
 
+                    }
                 }
-            }
-            else
-            {
-                Console.WriteLine("Invalid Input");
-            }
-            Console.WriteLine((!fail).ToString());
-            Console.ReadKey();
+                else
+                {
+                    Console.WriteLine("Kein Zahl du kahba!");
+                }
 
+                if (fail == false)
+                {
+                    result = "Diese Zahl ist Prim";
+                }
+
+                Console.WriteLine((result).ToString());
+                Console.ReadKey();
+                Console.Clear();
+            }
         }
     }
 }
+
