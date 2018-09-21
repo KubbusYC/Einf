@@ -50,8 +50,8 @@ namespace PrimeCheck
                     { return last; }                                                    //if we found a prime, return it as the result of nextPrime()
                 }
             }
-            
-                            //Variable Declaration --------------------------------- Variable Declaration
+
+            //Variable Declaration --------------------------------- Variable Declaration
             List<int> primes = new List<int>();         //list fo found primes smaller than n
             primes.Add(2);                              //first prime is always 2
             while (true)                                //Anything we don't reuse is in an endless loop
@@ -66,18 +66,26 @@ namespace PrimeCheck
                 if (int.TryParse(Console.ReadLine(), out n))     //Read input
                 {
                     n = Math.Abs(n);                            //Makes number be positive by default
-                    while (!fail && primes[primes.Count - 1] <= (int)(Math.Round(Math.Sqrt(n), 0)))    //keep checking until we find something or we checked up to the root of n
+                    if (!checkPrimes(n, primes))        //start to check if the number is prime using the smaller primes
                     {
-                        if (!checkPrimes(n, primes))        //start to check if the number is prime using the smaller primes
-                        {
-                            fail = true;
-                        }
-                        else
-                        {
-                            primes.Add(nextPrime(primes)); //if it wasn't conclusive, add a new prime
-                        }
-
+                        fail = true;
                     }
+                    else
+                    {
+                        while (!fail && primes[primes.Count - 1] <= (int)(Math.Round(Math.Sqrt(n), 0)))    //keep checking until we find something or we checked up to the root of n
+                        {
+                            if (Divisible(n, primes[primes.Count - 1]))        //start to check if the number is prime using the newest prime
+                            {
+                                fail = true;
+                            }
+                            else
+                            {
+                                primes.Add(nextPrime(primes)); //if it wasn't conclusive, add a new prime
+                            }
+
+                        }
+                    }
+                   
                 }
                 else
                 {
