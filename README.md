@@ -1,8 +1,5 @@
 # Einf
-Husufgabe alei mache sugt arsch
 
-Eppis hinzuefüege oder apasse:
-Neue "Branch" mit euchem Name,
-Dateie ifüege/überschribe,
-Merge Request zum Master branch,
-Warte
+-Melded euch im forum oder im Unterricht, denn werdend er Collaborator.|
+-Je ein Branch für jedes Program [Program]-master|
+-Neue Branch für updates. (Update Branches werded nach em merge glöscht)|
