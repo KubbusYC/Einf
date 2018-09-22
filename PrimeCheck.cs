@@ -54,16 +54,20 @@ namespace PrimeCheck
             //Variable Declaration --------------------------------- Variable Declaration
             List<int> primes = new List<int>();         //list fo found primes smaller than n
             primes.Add(2);                              //first prime is always 2
+            string messageStart = "Gib Zahl: (-h für Hilfe)";
             while (true)                                //Anything we don't reuse is in an endless loop
             {
                 int n;                                  //the user-input
                 bool fail = false;                      //default is prime, as we try to prove the opposite over and over
                 string result = "Falsch hihi";          //used in Translation
                 bool parseSuccessfull = true;           //used to catch non integer inputs
+                string input;
 
                 //Code Start --------------------------------------------- Code Start
-                Console.WriteLine("Gib Zahl:");
-                if (int.TryParse(Console.ReadLine(), out n))     //Read input
+                Console.WriteLine(messageStart);
+                messageStart = "Gib Zahl:";
+                input = Console.ReadLine();
+                if (int.TryParse(input, out n))     //Read input
                 {
                     n = Math.Abs(n);                            //Makes number be positive by default
                     if (!checkPrimes(n, primes))        //start to check if the number is prime using the smaller primes
@@ -85,11 +89,21 @@ namespace PrimeCheck
 
                         }
                     }
-                   
+
                 }
                 else
                 {
-                    Console.WriteLine("Kein Zahl du kahba!");
+                    if (input == "-h")
+                    {
+                        Console.Clear();
+                        Console.WriteLine("- Negative Zahlen werden positiv gemacht");
+                        Console.WriteLine("- Gröste verarbeitbare Zahl = 2'147'483'647");
+                        Console.WriteLine("- Neue Updates auf GitHub>KubbusYC>Einf");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Kein gültige Zahl du kahba!");
+                    }
                     parseSuccessfull = false;
                 }
 
